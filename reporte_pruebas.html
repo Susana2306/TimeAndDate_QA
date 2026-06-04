@@ -1,0 +1,508 @@
+<!DOCTYPE HTML><html><head><title>Behave Test Report</title><meta content="text/html;charset=utf-8" http-equiv="content-type" /><style type="text/css"><!--
+@charset "utf-8"; .passed{}.failed{}.error{}.skipped{}.undefined{}.summary{}.failed_scenarios{}.footer{}body{font-size:0;color:white;margin:0;padding:0}.behave,td,th{font:normal 11px "Lucida Grande",Helvetica,sans-serif;background:white;color:black}.behave #behave-header,td #behave-header,th #behave-header{background:#65c400;color:white;height:8em}.behave #behave-header #expand-collapse p,td #behave-header #expand-collapse p,th #behave-header #expand-collapse p{float:right;margin:0 0 0 10px}.behave .scenario h3,td .scenario h3,th .scenario h3,.background h3{font-size:11px;padding:3px;margin:0;background:#65c400;color:white;font-weight:bold}.background h3{font-size:1.2em;background:#666}.behave h1,td h1,th h1{margin:0 10px 0 10px;padding:10px;font-family:"Lucida Grande",Helvetica,sans-serif;font-size:2em;position:absolute}.behave h4,td h4,th h4{margin-bottom:2px}.behave div.feature,td div.feature,th div.feature{padding:2px;margin:0 10px 5px 10px}.behave div.examples,td div.examples,th div.examples{padding:0 0 0 1em}.behave .stats,td .stats,th .stats{margin:2em}.behave .summary ul.features li,td .summary ul.features li,th .summary ul.features li{display:inline}.behave .step_name,td .step_name,th .step_name{float:left}.behave .step_file,td .step_file,th .step_file{text-align:right;color:#999}.behave .step_file a,td .step_file a,th .step_file a{color:#999}.behave .scenario_file,td .scenario_file,th .scenario_file{float:right;color:#999}.behave .step_duration{padding-left:1em}.behave .tag,td .tag,th .tag{font-weight:bold;color:#246ac1}.behave .backtrace,td .backtrace,th .backtrace{margin-top:0;margin-bottom:0;margin-left:1em;color:black}.behave a,td a,th a{color:#be5c00;margin-right:.5em}.behave a:hover,td a:hover,th a:hover{text-decoration:none}.behave a:visited,td a:visited,th a:visited{font-weight:normal}.behave a div.examples,td a div.examples,th a div.examples{margin:5px 0 5px 15px;color:black}.behave .outline table,td .outline table,th .outline table{margin:0 0 5px 10px}.behave table,td table,th table{border-collapse:collapse}.behave table td,td table td,th table td{padding:3px 3px 3px 5px}.behave table td.failed,.behave table td.passed,.behave table td.skipped,.behave table td.pending,.behave table td.undefined,td table td.failed,td table td.passed,td table td.skipped,td table td.pending{padding-left:18px;padding-right:10px}.behave table td.failed,td table td.failed,th table td.failed{border-left:5px solid #c20000;border-bottom:1px solid #c20000;background:#fffbd3;color:#c20000}.behave table td.passed,td table td.passed,th table td.passed{border-left:5px solid #65c400;border-bottom:1px solid #65c400;background:#dbffb4;color:#3d7700}.behave table td.skipped,td table td.skipped,th table td.skipped{border-left:5px solid aqua;border-bottom:1px solid aqua;background:#e0ffff;color:#011}.behave table td.pending,td table td.pending,th table td.pending{border-left:5px solid #faf834;border-bottom:1px solid #faf834;background:#fcfb98;color:#131313}.behave table td.undefined,td table td.undefined,th table td.undefined{border-left:5px solid #faf834;border-bottom:1px solid #faf834;background:#fcfb98;color:#131313}.behave table td.message,td table td.message,th table td.message{border-left:5px solid aqua;border-bottom:1px solid aqua;background:#e0ffff;color:#011}.behave ol,td ol,th ol{list-style:none;margin:0;padding:0}.behave ol li.step,td ol li.step,th ol li.step{padding:3px 3px 3px 18px;margin:5px 0 5px 5px}.behave ol li,td ol li,th ol li{margin:0 0 0 1em;padding:0 0 0 .2em}.behave ol li span.param,td ol li span.param,th ol li span.param{font-weight:bold}.behave ol li.failed,td ol li.failed,th ol li.failed{border-left:5px solid #c20000;border-bottom:1px solid #c20000;background:#fffbd3;color:#c20000}.behave ol li.passed,td ol li.passed,th ol li.passed{border-left:5px solid #65c400;border-bottom:1px solid #65c400;background:#dbffb4;color:#3d7700}.behave ol li.skipped,td ol li.skipped,th ol li.skipped{border-left:5px solid aqua;border-bottom:1px solid aqua;background:#e0ffff;color:#011}.behave ol li.pending,td ol li.pending,th ol li.pending{border-left:5px solid #faf834;border-bottom:1px solid #faf834;background:#fcfb98;color:#131313}.behave ol li.undefined,td ol li.undefined,th ol li.undefined{border-left:5px solid #faf834;border-bottom:1px solid #faf834;background:#fcfb98;color:#131313}.behave ol li.message,td ol li.message,th ol li.message{border-left:5px solid aqua;border-bottom:1px solid aqua;background:#e0ffff;color:#011;margin-left:10px}.behave #summary,td #summary,th #summary{margin:0;padding:5px 10px;text-align:right;top:0;right:0;float:right}.behave #summary p,td #summary p,th #summary p{margin:0 0 0 2px}.behave #summary #totals,td #summary #totals,th #summary #totals{font-size:1.2em}.behave .scenario h3.failed,td .scenario h3.failed,th .scenario h3.failed,.background h3.failed{background:#c20000}.behave #behave-header.failed,td #behave-header.failed,th #behave-header.failed{background:#c20000}.behave .scenario h3.undefined,td .scenario h3.undefined,th .scenario h3.undefined,.background h3.undefined{background:#faf834;color:black}.behave #behave-header.undefined,td #behave-header.undefined,th #behave-header.undefined{background:#faf834;color:black}#behave-header.failed a{color:white}pre{white-space:pre-wrap}
+--></style><script type="text/javascript"><!--
+function Collapsible_toggle(id){var elem=document.getElementById(id);elem.style.display=(elem.style.display=='none'?'block':'none');return false;};function Collapsible_expandAll(className){var elems=document.getElementsByClassName(className);for(var i=0;i<elems.length;i++){elems[i].style.display='block';}};function Collapsible_collapseAll(className){var elems=document.getElementsByClassName(className);for(var i=0;i<elems.length;i++){elems[i].style.display='none';}};function Collapsible_expandAllFailed(){var elems=document.getElementsByClassName('failed');for(var i=0;i<elems.length;i++){var elem=elems[i];if(elem.nodeName=='H3'){elem.parentElement.getElementsByTagName('ol')[0].style.display='block';}}}
+--></script></head><body><div class="behave"><div id="behave-header" class="undefined"><div id="label"><h1>Behave Test Report</h1></div><div id="summary"><p id="totals"><p id="feature_totals">Features: error: 10, passed: 1</p><p id="scenario_totals">Scenarios: error: 19, passed: 3</p><p id="step_totals">Steps: passed: 41, error: 14, skipped: 32, undefined: 5</p></p><p id="duration">Finished in 107.7 seconds</p><div id="expand-collapse"><a id="expander" href="#" onclick="Collapsible_expandAll('scenario_steps')">Expand All</a><span> | </span><a id="collapser" href="#" onclick="Collapsible_collapseAll('scenario_steps')">Collapse All</a><span> | </span><a id="failed_expander" href="#" onclick="Collapsible_expandAllFailed()">Expand All Failed</a></div></div></div><div class="feature"><h2><span class="val">Característica: Escenario 001 - Personalizar experiencia de usuario (HU-1)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_001_Personalizar_Experiencia/escenario_001.feature:5</span><span class="tag">@RutaCritica</span><h3 onclick="Collapsible_toggle('scenario_0')"><span class="val">Escenario: Inicio de sesión y personalización de perfil</span></h3><ol class="scenario_steps" id="scenario_0"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre la página principal de timeanddate.com</span><small class="step_duration">(1.683s)</small></div><div class="step_file"><span>features/steps/steps_001.py:6</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">hace clic en el enlace de "Sign In" en el header</span><small class="step_duration">(16.570s)</small></div><div class="step_file"><span>features/steps/steps_001.py:10</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_1')">Error Message</a><pre id="embed_1" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_001.py", line 12, in step_impl
+    WebDriverWait(context.driver, 10).until(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'Sign In')]"))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).click()
+    ^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/support/wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+#0 0x556baaec02ca &lt;unknown&gt;
+#1 0x556baa967550 &lt;unknown&gt;
+#2 0x556baa9b90f0 &lt;unknown&gt;
+#3 0x556baa9b92e1 &lt;unknown&gt;
+#4 0x556baaa075e4 &lt;unknown&gt;
+#5 0x556baa9debed &lt;unknown&gt;
+#6 0x556baaa049e6 &lt;unknown&gt;
+#7 0x556baa9de993 &lt;unknown&gt;
+#8 0x556baa9aad6b &lt;unknown&gt;
+#9 0x556baa9ac141 &lt;unknown&gt;
+#10 0x556baae852ab &lt;unknown&gt;
+#11 0x556baae890b9 &lt;unknown&gt;
+#12 0x556baae6c139 &lt;unknown&gt;
+#13 0x556baae89c68 &lt;unknown&gt;
+#14 0x556baae5060f &lt;unknown&gt;
+#15 0x556baaeae1f8 &lt;unknown&gt;
+#16 0x556baaeae3d6 &lt;unknown&gt;
+#17 0x556baaebf5e6 &lt;unknown&gt;
+#18 0x7f9f82edf759 start_thread
+#19 0x7f9f82f6390c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_001_Personalizar_Experiencia/escenario_001.feature:16</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_1')"><span class="val">Escenario: Inicio de sesión fallido por credenciales inválidas</span></h3><ol class="scenario_steps" id="scenario_1"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario está en la pantalla de inicio de sesión ("Sign In")</span><small class="step_duration">(1.152s)</small></div><div class="step_file"><span>features/steps/steps_001.py:44</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">ingresa un usuario no registrado o una contraseña incorrecta</span><small class="step_duration">(0.118s)</small></div><div class="step_file"><span>features/steps/steps_001.py:48</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">intenta acceder al sistema</span><small class="step_duration">(0.727s)</small></div><div class="step_file"><span>features/steps/steps_001.py:53</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">el sistema deniega el acceso y muestra un mensaje de error en el formulario</span><small class="step_duration">(8.045s)</small></div><div class="step_file"><span>features/steps/steps_001.py:58</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_2')">Error Message</a><pre id="embed_2" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_001.py", line 60, in step_impl
+    error = context.driver.find_element(By.CLASS_NAME, "err").text
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".err"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x5564f90332ca &lt;unknown&gt;
+#1 0x5564f8ada550 &lt;unknown&gt;
+#2 0x5564f8b2c0f0 &lt;unknown&gt;
+#3 0x5564f8b2c2e1 &lt;unknown&gt;
+#4 0x5564f8b7a5e4 &lt;unknown&gt;
+#5 0x5564f8b51bed &lt;unknown&gt;
+#6 0x5564f8b779e6 &lt;unknown&gt;
+#7 0x5564f8b51993 &lt;unknown&gt;
+#8 0x5564f8b1dd6b &lt;unknown&gt;
+#9 0x5564f8b1f141 &lt;unknown&gt;
+#10 0x5564f8ff82ab &lt;unknown&gt;
+#11 0x5564f8ffc0b9 &lt;unknown&gt;
+#12 0x5564f8fdf139 &lt;unknown&gt;
+#13 0x5564f8ffcc68 &lt;unknown&gt;
+#14 0x5564f8fc360f &lt;unknown&gt;
+#15 0x5564f90211f8 &lt;unknown&gt;
+#16 0x5564f90213d6 &lt;unknown&gt;
+#17 0x5564f90325e6 &lt;unknown&gt;
+#18 0x7f7250e2b759 start_thread
+#19 0x7f7250eaf90c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_001_Personalizar_Experiencia/escenario_001.feature:23</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_2')"><span class="val">Escenario: Validación de ciudad inválida</span></h3><ol class="scenario_steps" id="scenario_2"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario se encuentra autenticado en su perfil</span><small class="step_duration">(1.189s)</small></div><div class="step_file"><span>features/steps/steps_001.py:63</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>va a la configuración de "My Units" e intenta buscar una ciudad inválida como "</span><b>12345</b><span>"</span></span><small class="step_duration">(8.021s)</small></div><div class="step_file"><span>features/steps/steps_001.py:67</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_3')">Error Message</a><pre id="embed_3" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_001.py", line 69, in step_impl
+    box = context.driver.find_element(By.ID, "homecity")
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="homecity"]"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x5638e75802ca &lt;unknown&gt;
+#1 0x5638e7027550 &lt;unknown&gt;
+#2 0x5638e70790f0 &lt;unknown&gt;
+#3 0x5638e70792e1 &lt;unknown&gt;
+#4 0x5638e70c75e4 &lt;unknown&gt;
+#5 0x5638e709ebed &lt;unknown&gt;
+#6 0x5638e70c49e6 &lt;unknown&gt;
+#7 0x5638e709e993 &lt;unknown&gt;
+#8 0x5638e706ad6b &lt;unknown&gt;
+#9 0x5638e706c141 &lt;unknown&gt;
+#10 0x5638e75452ab &lt;unknown&gt;
+#11 0x5638e75490b9 &lt;unknown&gt;
+#12 0x5638e752c139 &lt;unknown&gt;
+#13 0x5638e7549c68 &lt;unknown&gt;
+#14 0x5638e751060f &lt;unknown&gt;
+#15 0x5638e756e1f8 &lt;unknown&gt;
+#16 0x5638e756e3d6 &lt;unknown&gt;
+#17 0x5638e757f5e6 &lt;unknown&gt;
+#18 0x7f0124949759 start_thread
+#19 0x7f01249cd90c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_001_Personalizar_Experiencia/escenario_001.feature:30</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_3')"><span class="val">Escenario: Preferencias reflejadas en reloj y clima</span></h3><ol class="scenario_steps" id="scenario_3"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario modificó exitosamente su ciudad base a "Bogotá" en sus preferencias</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>features/steps/steps_001.py:83</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">navega por los diferentes módulos de la plataforma de timeanddate</span><small class="step_duration">(1.135s)</small></div><div class="step_file"><span>features/steps/steps_001.py:87</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">la ciudad configurada en preferencias se refleja automáticamente en las consultas de reloj mundial y clima</span><small class="step_duration">(8.049s)</small></div><div class="step_file"><span>features/steps/steps_001.py:91</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_4')">Error Message</a><pre id="embed_4" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_001.py", line 93, in step_impl
+    header_city = context.driver.find_element(By.ID, "nav-bc").text
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="nav-bc"]"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x55c1b50382ca &lt;unknown&gt;
+#1 0x55c1b4adf550 &lt;unknown&gt;
+#2 0x55c1b4b310f0 &lt;unknown&gt;
+#3 0x55c1b4b312e1 &lt;unknown&gt;
+#4 0x55c1b4b7f5e4 &lt;unknown&gt;
+#5 0x55c1b4b56bed &lt;unknown&gt;
+#6 0x55c1b4b7c9e6 &lt;unknown&gt;
+#7 0x55c1b4b56993 &lt;unknown&gt;
+#8 0x55c1b4b22d6b &lt;unknown&gt;
+#9 0x55c1b4b24141 &lt;unknown&gt;
+#10 0x55c1b4ffd2ab &lt;unknown&gt;
+#11 0x55c1b50010b9 &lt;unknown&gt;
+#12 0x55c1b4fe4139 &lt;unknown&gt;
+#13 0x55c1b5001c68 &lt;unknown&gt;
+#14 0x55c1b4fc860f &lt;unknown&gt;
+#15 0x55c1b50261f8 &lt;unknown&gt;
+#16 0x55c1b50263d6 &lt;unknown&gt;
+#17 0x55c1b50375e6 &lt;unknown&gt;
+#18 0x7f7099480759 start_thread
+#19 0x7f709950490c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 009 - Consultar zonas horarias básicas (HU-14)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_009_Zonas_Horarias_Basico/escenario_009.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_4')"><span class="val">Escenario: Validación con zona origen y destino iguales</span></h3><ol class="scenario_steps" id="scenario_4"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre el convertidor de huso horario de timeanddate (/worldclock/converter.html)</span><small class="step_duration">(1.206s)</small></div><div class="step_file"><span>features/steps/steps_009.py:6</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>selecciona "</span><b>Colombia - Bogotá</b><span>" en el campo de ciudad origen</span></span><small class="step_duration">(0.367s)</small></div><div class="step_file"><span>features/steps/steps_009.py:11</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val"><span>selecciona la misma zona "</span><b>Colombia - Bogotá</b><span>" en el campo de ciudad destino</span></span><small class="step_duration">(0.211s)</small></div><div class="step_file"><span>features/steps/steps_009.py:18</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">ejecuta el cálculo de conversión presionando el botón "Convert time"</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>features/steps/steps_009.py:44</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">el resultado muestra exactamente la misma hora o un mensaje indicando que las zonas son idénticas</span><small class="step_duration">(0.037s)</small></div><div class="step_file"><span>features/steps/steps_009.py:50</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_5')">Error Message</a><pre id="embed_5" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_009.py", line 54, in step_impl
+    h2 = rows[1].find_element(By.CLASS_NAME, "location__formatted-time").text.strip()
+         ~~~~^^^
+IndexError: list index out of range
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_009_Zonas_Horarias_Basico/escenario_009.feature:13</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_5')"><span class="val">Escenario: Conversión hacia zona destino</span></h3><ol class="scenario_steps" id="scenario_5"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario se encuentra en la pantalla del convertidor de hora</span><small class="step_duration">(1.134s)</small></div><div class="step_file"><span>features/steps/steps_009.py:6</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>selecciona una zona origen "</span><b>Colombia - Bogotá</b><span>" y una zona destino diferente como "</span><b>Spain - Madrid</b><span>"</span></span><small class="step_duration">(0.276s)</small></div><div class="step_file"><span>features/steps/steps_009.py:18</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_6')">Error Message</a><pre id="embed_6" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_009.py", line 24, in step_impl
+    WebDriverWait(context.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//ul[@class='asu']/li/a"))).click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 114, in click
+    self._execute(Command.CLICK_ELEMENT)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+#0 0x5627f77452ca &lt;unknown&gt;
+#1 0x5627f71ec550 &lt;unknown&gt;
+#2 0x5627f71f3198 &lt;unknown&gt;
+#3 0x5627f71f5a28 &lt;unknown&gt;
+#4 0x5627f71f5ab3 &lt;unknown&gt;
+#5 0x5627f7241400 &lt;unknown&gt;
+#6 0x5627f723f1f2 &lt;unknown&gt;
+#7 0x5627f72322ea &lt;unknown&gt;
+#8 0x5627f7263bc2 &lt;unknown&gt;
+#9 0x5627f7231c6a &lt;unknown&gt;
+#10 0x5627f7263d8e &lt;unknown&gt;
+#11 0x5627f72899e6 &lt;unknown&gt;
+#12 0x5627f7263993 &lt;unknown&gt;
+#13 0x5627f722fd6b &lt;unknown&gt;
+#14 0x5627f7231141 &lt;unknown&gt;
+#15 0x5627f770a2ab &lt;unknown&gt;
+#16 0x5627f770e0b9 &lt;unknown&gt;
+#17 0x5627f76f1139 &lt;unknown&gt;
+#18 0x5627f770ec68 &lt;unknown&gt;
+#19 0x5627f76d560f &lt;unknown&gt;
+#20 0x5627f77331f8 &lt;unknown&gt;
+#21 0x5627f77333d6 &lt;unknown&gt;
+#22 0x5627f77445e6 &lt;unknown&gt;
+#23 0x7f9d018c5759 start_thread
+#24 0x7f9d0194990c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 010 - Calcular zonas horarias y consultar reloj mundial (HU-14 / HU-13)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_010_Zonas_Horarias_Reloj/escenario_010.feature:5</span><span class="tag">@RutaCritica</span><h3 onclick="Collapsible_toggle('scenario_6')"><span class="val">Escenario: Conversión de hora y contraste con reloj mundial</span></h3><ol class="scenario_steps" id="scenario_6"><li class="step error"><div class="step_name"><span class="keyword">Dado </span><span class="step val"><span>que el usuario convierte la hora actual de Bogotá a "</span><b>Tokio</b><span>" en el conversor de husos horarios</span></span><small class="step_duration">(2.330s)</small></div><div class="step_file"><span>features/steps/steps_010.py:7</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_7')">Error Message</a><pre id="embed_7" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_010.py", line 16, in step_impl
+    WebDriverWait(context.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//ul[@class='asu']/li/a"))).click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 114, in click
+    self._execute(Command.CLICK_ELEMENT)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: stale element not found in the current frame
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+#0 0x55745962f2ca &lt;unknown&gt;
+#1 0x5574590d6550 &lt;unknown&gt;
+#2 0x5574590dd198 &lt;unknown&gt;
+#3 0x5574590dfa28 &lt;unknown&gt;
+#4 0x5574590dfab3 &lt;unknown&gt;
+#5 0x55745912ee69 &lt;unknown&gt;
+#6 0x55745912c8f5 &lt;unknown&gt;
+#7 0x55745912a462 &lt;unknown&gt;
+#8 0x557459129b80 &lt;unknown&gt;
+#9 0x55745911c2ea &lt;unknown&gt;
+#10 0x55745914dbc2 &lt;unknown&gt;
+#11 0x55745911bc6a &lt;unknown&gt;
+#12 0x55745914dd8e &lt;unknown&gt;
+#13 0x5574591739e6 &lt;unknown&gt;
+#14 0x55745914d993 &lt;unknown&gt;
+#15 0x557459119d6b &lt;unknown&gt;
+#16 0x55745911b141 &lt;unknown&gt;
+#17 0x5574595f42ab &lt;unknown&gt;
+#18 0x5574595f80b9 &lt;unknown&gt;
+#19 0x5574595db139 &lt;unknown&gt;
+#20 0x5574595f8c68 &lt;unknown&gt;
+#21 0x5574595bf60f &lt;unknown&gt;
+#22 0x55745961d1f8 &lt;unknown&gt;
+#23 0x55745961d3d6 &lt;unknown&gt;
+#24 0x55745962e5e6 &lt;unknown&gt;
+#25 0x7fade9f55759 start_thread
+#26 0x7fade9fd990c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 013 - Contribuciones (HU-17)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_013_Contribuciones/escenario_013.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_7')"><span class="val">Escenario: Cancelación del flujo de contribución</span></h3><ol class="scenario_steps" id="scenario_7"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre el formulario de contacto o feedback</span><small class="step_duration">(0.956s)</small></div><div class="step_file"><span>features/steps/steps_013.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">redacta un mensaje en el campo de descripción</span><small class="step_duration">(0.067s)</small></div><div class="step_file"><span>features/steps/steps_013.py:9</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">recarga la página o navega hacia atrás antes de enviarlo</span><small class="step_duration">(0.172s)</small></div><div class="step_file"><span>features/steps/steps_013.py:13</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">la contribución se descarta y el formulario vuelve a su estado vacío</span><small class="step_duration">(0.023s)</small></div><div class="step_file"><span>features/steps/steps_013.py:17</span></div><span class="embed" /></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_013_Contribuciones/escenario_013.feature:12</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_8')"><span class="val">Escenario: Flujo completo de contribución</span></h3><ol class="scenario_steps" id="scenario_8"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el formulario de feedback está cargado</span><small class="step_duration">(0.891s)</small></div><div class="step_file"><span>features/steps/steps_013.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">el usuario ingresa su nombre, un correo válido y un mensaje de prueba</span><small class="step_duration">(0.158s)</small></div><div class="step_file"><span>features/steps/steps_013.py:22</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">hace clic en enviar</span><small class="step_duration">(4.265s)</small></div><div class="step_file"><span>features/steps/steps_013.py:28</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">se muestra una pantalla o mensaje de confirmación de recepción del mensaje</span><small class="step_duration">(0.013s)</small></div><div class="step_file"><span>features/steps/steps_013.py:32</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_8')">Error Message</a><pre id="embed_8" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_013.py", line 35, in step_impl
+    body_text = context.driver.find_element(By.TAG_NAME, "body").text
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'text'
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 014 - Consultar eventos y fechas importantes (HU-2)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_014_Cancelar_Evento/escenario_014.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_9')"><span class="val">Escenario: Cancelación de creación de evento</span></h3><ol class="scenario_steps" id="scenario_9"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario ingresa al creador de cuenta regresiva para un evento</span><small class="step_duration">(1.718s)</small></div><div class="step_file"><span>features/steps/steps_014.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">llena el título del evento con "Reunión GITESI"</span><small class="step_duration">(0.067s)</small></div><div class="step_file"><span>features/steps/steps_014.py:8</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Y </span><span class="step val">presiona el botón o enlace para cancelar o regresar al inicio</span><small class="step_duration">(8.023s)</small></div><div class="step_file"><span>features/steps/steps_014.py:12</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_9')">Error Message</a><pre id="embed_9" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_014.py", line 15, in step_impl
+    context.driver.find_element(By.XPATH, "//a[@href='https://www.timeanddate.com/']").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@href='https://www.timeanddate.com/']"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x555705a662ca &lt;unknown&gt;
+#1 0x55570550d550 &lt;unknown&gt;
+#2 0x55570555f0f0 &lt;unknown&gt;
+#3 0x55570555f2e1 &lt;unknown&gt;
+#4 0x5557055ad5e4 &lt;unknown&gt;
+#5 0x555705584bed &lt;unknown&gt;
+#6 0x5557055aa9e6 &lt;unknown&gt;
+#7 0x555705584993 &lt;unknown&gt;
+#8 0x555705550d6b &lt;unknown&gt;
+#9 0x555705552141 &lt;unknown&gt;
+#10 0x555705a2b2ab &lt;unknown&gt;
+#11 0x555705a2f0b9 &lt;unknown&gt;
+#12 0x555705a12139 &lt;unknown&gt;
+#13 0x555705a2fc68 &lt;unknown&gt;
+#14 0x5557059f660f &lt;unknown&gt;
+#15 0x555705a541f8 &lt;unknown&gt;
+#16 0x555705a543d6 &lt;unknown&gt;
+#17 0x555705a655e6 &lt;unknown&gt;
+#18 0x7f7a1b973759 start_thread
+#19 0x7f7a1b9f790c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 017 - Obtener Información Meteorológica (HU-3)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_017_Visualizar_Temperatura/escenario_017.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_10')" class="undefined"><span class="val">Escenario: Visualización del valor de temperatura en clima</span></h3><ol class="scenario_steps" id="scenario_10"><li class="step undefined"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario ingresa a la sección principal del clima</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>&lt;unknown&gt;</span></div><span class="embed" /></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 018 - Consulta integrada de Clima y Astronomía (HU-3 / HU-4)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_018_Clima_Astronomia_Bogota/escenario_018.feature:5</span><span class="tag">@RutaCritica</span><h3 onclick="Collapsible_toggle('scenario_11')"><span class="val">Escenario: Consulta de clima y astronomía para Bogotá</span></h3><ol class="scenario_steps" id="scenario_11"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario se encuentra en la página de clima de "Bogotá"</span><small class="step_duration">(1.201s)</small></div><div class="step_file"><span>features/steps/steps_018.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">verifica las condiciones actuales de temperatura</span><small class="step_duration">(0.038s)</small></div><div class="step_file"><span>features/steps/steps_018.py:8</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">navega mediante el menú a la pestaña de "Sun &amp; Moon" (Sol y Luna)</span><small class="step_duration">(0.398s)</small></div><div class="step_file"><span>features/steps/steps_018.py:13</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">se visualizan las horas de salida y puesta del sol junto con la fase lunar actual de Bogotá</span><small class="step_duration">(0.084s)</small></div><div class="step_file"><span>features/steps/steps_018.py:18</span></div><span class="embed" /></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 021 - Suscripción a Newsletter Informativo (HU-6)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_021_Newsletter/escenario_021.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_12')"><span class="val">Escenario: Validación de formato incorrecto en newsletter</span></h3><ol class="scenario_steps" id="scenario_12"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario se encuentra en la sección de Newsletter de la empresa (/news/newsletter.html)</span><small class="step_duration">(1.063s)</small></div><div class="step_file"><span>features/steps/steps_021.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>digita un correo con formato inválido como "</span><b>kevin_sin_arroba.com</b><span>"</span></span><small class="step_duration">(0.062s)</small></div><div class="step_file"><span>features/steps/steps_021.py:11</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">hace clic en el botón de suscripción "Subscribe"</span><small class="step_duration">(0.068s)</small></div><div class="step_file"><span>features/steps/steps_021.py:15</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">el sistema bloquea el envío y muestra un elemento de error de formato en el DOM</span><small class="step_duration">(8.045s)</small></div><div class="step_file"><span>features/steps/steps_021.py:20</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_10')">Error Message</a><pre id="embed_10" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_021.py", line 22, in step_impl
+    error_box = context.driver.find_element(By.CLASS_NAME, "err")
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".err"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x556396a662ca &lt;unknown&gt;
+#1 0x55639650d550 &lt;unknown&gt;
+#2 0x55639655f0f0 &lt;unknown&gt;
+#3 0x55639655f2e1 &lt;unknown&gt;
+#4 0x5563965ad5e4 &lt;unknown&gt;
+#5 0x556396584bed &lt;unknown&gt;
+#6 0x5563965aa9e6 &lt;unknown&gt;
+#7 0x556396584993 &lt;unknown&gt;
+#8 0x556396550d6b &lt;unknown&gt;
+#9 0x556396552141 &lt;unknown&gt;
+#10 0x556396a2b2ab &lt;unknown&gt;
+#11 0x556396a2f0b9 &lt;unknown&gt;
+#12 0x556396a12139 &lt;unknown&gt;
+#13 0x556396a2fc68 &lt;unknown&gt;
+#14 0x5563969f660f &lt;unknown&gt;
+#15 0x556396a541f8 &lt;unknown&gt;
+#16 0x556396a543d6 &lt;unknown&gt;
+#17 0x556396a655e6 &lt;unknown&gt;
+#18 0x7f4a19f2f759 start_thread
+#19 0x7f4a19fb390c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_021_Newsletter/escenario_021.feature:12</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_13')" class="undefined"><span class="val">Escenario: Validación de correo válido en newsletter</span></h3><ol class="scenario_steps" id="scenario_13"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el formulario de suscripción está desplegado en pantalla</span><small class="step_duration">(1.149s)</small></div><div class="step_file"><span>features/steps/steps_021.py:4</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">el usuario localiza el campo de entrada de texto para el email</span><small class="step_duration">(0.010s)</small></div><div class="step_file"><span>features/steps/steps_021.py:25</span></div><span class="embed" /></li><li class="step undefined"><div class="step_name"><span class="keyword">Y </span><span class="step val">digita un correo electrónico estructurado correctamente</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>&lt;unknown&gt;</span></div><span class="embed" /></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_021_Newsletter/escenario_021.feature:19</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_14')" class="undefined"><span class="val">Escenario: Validación de campo requerido en newsletter</span></h3><ol class="scenario_steps" id="scenario_14"><li class="step undefined"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario visualiza el campo de email del newsletter</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>&lt;unknown&gt;</span></div><span class="embed" /></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_021_Newsletter/escenario_021.feature:26</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_15')"><span class="val">Escenario: Suscripción exitosa al newsletter</span></h3><ol class="scenario_steps" id="scenario_15"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario está en la sección informativa de la empresa</span><small class="step_duration">(1.064s)</small></div><div class="step_file"><span>features/steps/steps_021.py:4</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">ingresa una dirección de correo válida y nueva que no esté registrada previamente</span><small class="step_duration">(8.076s)</small></div><div class="step_file"><span>features/steps/steps_021.py:47</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_11')">Error Message</a><pre id="embed_11" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_021.py", line 51, in step_impl
+    context.driver.find_element(By.ID, "submit").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 868, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="submit"]"}
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+#0 0x55fd7fbec2ca &lt;unknown&gt;
+#1 0x55fd7f693550 &lt;unknown&gt;
+#2 0x55fd7f6e50f0 &lt;unknown&gt;
+#3 0x55fd7f6e52e1 &lt;unknown&gt;
+#4 0x55fd7f7335e4 &lt;unknown&gt;
+#5 0x55fd7f70abed &lt;unknown&gt;
+#6 0x55fd7f7309e6 &lt;unknown&gt;
+#7 0x55fd7f70a993 &lt;unknown&gt;
+#8 0x55fd7f6d6d6b &lt;unknown&gt;
+#9 0x55fd7f6d8141 &lt;unknown&gt;
+#10 0x55fd7fbb12ab &lt;unknown&gt;
+#11 0x55fd7fbb50b9 &lt;unknown&gt;
+#12 0x55fd7fb98139 &lt;unknown&gt;
+#13 0x55fd7fbb5c68 &lt;unknown&gt;
+#14 0x55fd7fb7c60f &lt;unknown&gt;
+#15 0x55fd7fbda1f8 &lt;unknown&gt;
+#16 0x55fd7fbda3d6 &lt;unknown&gt;
+#17 0x55fd7fbeb5e6 &lt;unknown&gt;
+#18 0x7ffa0396b759 start_thread
+#19 0x7ffa039ef90c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 024 - Medir Tiempo con Temporizador y Cronómetro en Línea (HU-8)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_024_Temporizador_Cronometro/escenario_024.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_16')"><span class="val">Escenario: Validación de temporizador en cero</span></h3><ol class="scenario_steps" id="scenario_16"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre la herramienta de temporizador</span><small class="step_duration">(1.170s)</small></div><div class="step_file"><span>features/steps/steps_024.py:7</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">el tiempo está configurado en "00:00:00"</span><small class="step_duration">(8.412s)</small></div><div class="step_file"><span>features/steps/steps_024.py:11</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_12')">Error Message</a><pre id="embed_12" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_024.py", line 15, in step_impl
+    reset_btn = WebDriverWait(context.driver, 8).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--reset"))
+    )
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/support/wait.py", line 121, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_024_Temporizador_Cronometro/escenario_024.feature:12</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_17')" class="undefined"><span class="val">Escenario: Inicio y detención del cronómetro</span></h3><ol class="scenario_steps" id="scenario_17"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario configura el temporizador en "00:05:00"</span><small class="step_duration">(2.190s)</small></div><div class="step_file"><span>features/steps/steps_024.py:32</span></div><span class="embed" /></li><li class="step undefined"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">presiona "Start"</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>&lt;unknown&gt;</span></div><span class="embed" /></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_024_Temporizador_Cronometro/escenario_024.feature:19</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_18')"><span class="val">Escenario: Reinicio correcto del cronómetro</span></h3><ol class="scenario_steps" id="scenario_18"><li class="step error"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el temporizador se encuentra pausado después de haber iniciado</span><small class="step_duration">(0.002s)</small></div><div class="step_file"><span>features/steps/steps_024.py:63</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_13')">Error Message</a><pre id="embed_13" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_024.py", line 65, in step_impl
+    context.execute_steps('''
+    ~~~~~~~~~~~~~~~~~~~~~^^^^
+        Given que el usuario configura el temporizador en "00:05:00"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        When espera unos segundos y luego presiona "Pause"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ''')
+    ^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/runner.py", line 499, in execute_steps
+    steps = self.feature.parser.parse_steps(steps_text)
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/parser.py", line 932, in parse_steps
+    self.action(line)
+    ~~~~~~~~~~~^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/parser.py", line 494, in action
+    raise ParserError(msg, self.line, self.filename,
+                      line_text=line, reason=reason)
+behave.parser.ParserError: Failed to parse &lt;string&gt;: 
+Parser failure in state=steps at line 2: "Given que el usuario configura el temporizador en "00:05:00""
+</pre>    </span></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 026 - Uso combinado de herramientas (HU-8 / HU-9)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_026_Uso_Combinado_Tiempo_Fechas/escenario_026.feature:5</span><span class="tag">@RutaCritica</span><h3 onclick="Collapsible_toggle('scenario_19')" class="undefined"><span class="val">Escenario: Uso combinado de temporizador y calculadora de fechas</span></h3><ol class="scenario_steps" id="scenario_19"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario tiene abierto el temporizador en una pestaña</span><small class="step_duration">(2.037s)</small></div><div class="step_file"><span>features/steps/steps_026.py:7</span></div><span class="embed" /></li><li class="step undefined"><div class="step_name"><span class="keyword">Cuando </span><span class="step val">inicia un contador de 10 minutos</span><small class="step_duration">(0.000s)</small></div><div class="step_file"><span>&lt;unknown&gt;</span></div><span class="embed" /></li></ol><span /></div><div class="feature"><h2><span class="val">Característica: Escenario 027 - Calcular duraciones y planificación de fechas (HU-9)</span></h2><span /></div><div class="scenario"><span class="scenario_file">features/ESC_027_Calculadora_Fechas/escenario_027.feature:5</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_20')"><span class="val">Escenario: Validación de formato incorrecto en fechas</span></h3><ol class="scenario_steps" id="scenario_20"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre la calculadora de fechas de timeanddate</span><small class="step_duration">(1.003s)</small></div><div class="step_file"><span>features/steps/steps_027.py:6</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>ingresa un valor de mes inválido como "</span><b>15</b><span>" en la fecha de inicio</span></span><small class="step_duration">(0.063s)</small></div><div class="step_file"><span>features/steps/steps_027.py:11</span></div><span class="embed" /></li><li class="step error"><div class="step_name"><span class="keyword">Y </span><span class="step val">hace clic en el botón de calcular duración</span><small class="step_duration">(1.141s)</small></div><div class="step_file"><span>features/steps/steps_027.py:15</span></div><span class="embed"><a onclick="Collapsible_toggle('embed_14')">Error Message</a><pre id="embed_14" style="display: none">Traceback (most recent call last):
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/model.py", line 1991, in run
+    match.run(runner.context)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/behave/matchers.py", line 105, in run
+    self.func(context, *args, **kwargs)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "features/steps/steps_027.py", line 18, in step_impl
+    context.driver.find_element(By.ID, "subbut2").click()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 114, in click
+    self._execute(Command.CLICK_ELEMENT)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/antjzssd/source/classes/calidad/timeanddate_escenarios/.venv/lib64/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;input type="submit" id="subbut2" value="Calculate Duration"&gt; is not clickable at point (450, 579). Other element would receive the click: &lt;a href="javascript:menc(5)" onmousedown="pM.y()"&gt;...&lt;/a&gt;
+  (Session info: chrome=138.0.7204.303); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+#0 0x55e5d442a2ca &lt;unknown&gt;
+#1 0x55e5d3ed1550 &lt;unknown&gt;
+#2 0x55e5d3f29f5c &lt;unknown&gt;
+#3 0x55e5d3f27dc2 &lt;unknown&gt;
+#4 0x55e5d3f25462 &lt;unknown&gt;
+#5 0x55e5d3f24b80 &lt;unknown&gt;
+#6 0x55e5d3f172ea &lt;unknown&gt;
+#7 0x55e5d3f48bc2 &lt;unknown&gt;
+#8 0x55e5d3f16c6a &lt;unknown&gt;
+#9 0x55e5d3f48d8e &lt;unknown&gt;
+#10 0x55e5d3f6e9e6 &lt;unknown&gt;
+#11 0x55e5d3f48993 &lt;unknown&gt;
+#12 0x55e5d3f14d6b &lt;unknown&gt;
+#13 0x55e5d3f16141 &lt;unknown&gt;
+#14 0x55e5d43ef2ab &lt;unknown&gt;
+#15 0x55e5d43f30b9 &lt;unknown&gt;
+#16 0x55e5d43d6139 &lt;unknown&gt;
+#17 0x55e5d43f3c68 &lt;unknown&gt;
+#18 0x55e5d43ba60f &lt;unknown&gt;
+#19 0x55e5d44181f8 &lt;unknown&gt;
+#20 0x55e5d44183d6 &lt;unknown&gt;
+#21 0x55e5d44295e6 &lt;unknown&gt;
+#22 0x7f773d353759 start_thread
+#23 0x7f773d3d790c __clone3
+
+</pre>    </span></li></ol><span /></div><div class="scenario"><span class="scenario_file">features/ESC_027_Calculadora_Fechas/escenario_027.feature:12</span><span class="tag">@RutaAlterna</span><h3 onclick="Collapsible_toggle('scenario_21')"><span class="val">Escenario: Cálculo con fechas válidas</span></h3><ol class="scenario_steps" id="scenario_21"><li class="step passed"><div class="step_name"><span class="keyword">Dado </span><span class="step val">que el usuario abre la calculadora de fechas</span><small class="step_duration">(1.112s)</small></div><div class="step_file"><span>features/steps/steps_027.py:6</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Cuando </span><span class="step val"><span>ingresa "</span><b>1 de Enero de 2025</b><span>" como fecha de inicio</span></span><small class="step_duration">(0.182s)</small></div><div class="step_file"><span>features/steps/steps_027.py:26</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val"><span>ingresa "</span><b>1 de Enero de 2026</b><span>" como fecha de fin</span></span><small class="step_duration">(0.136s)</small></div><div class="step_file"><span>features/steps/steps_027.py:33</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Y </span><span class="step val">hace clic en el botón de calcular duración</span><small class="step_duration">(0.050s)</small></div><div class="step_file"><span>features/steps/steps_027.py:15</span></div><span class="embed" /></li><li class="step passed"><div class="step_name"><span class="keyword">Entonces </span><span class="step val">el resultado muestra exactamente "365 days" o su equivalente</span><small class="step_duration">(0.350s)</small></div><div class="step_file"><span>features/steps/steps_027.py:40</span></div><span class="embed" /></li></ol><span /></div></div></body></html>
