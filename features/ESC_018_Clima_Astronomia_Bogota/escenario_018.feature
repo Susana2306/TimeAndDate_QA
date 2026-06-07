@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 018 - Consulta integrada de Clima y Astronomía (HU-3 / HU-4)
 
-  @RutaCritica
+  @RutaCritica @E-2.1
   Escenario: Consulta de clima y astronomía para Bogotá
     Dado que el usuario se encuentra en la página de clima de "Bogotá"
     Cuando verifica las condiciones actuales de temperatura

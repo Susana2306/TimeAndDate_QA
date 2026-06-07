@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 026 - Uso combinado de herramientas (HU-8 / HU-9)
 
-  @RutaCritica
+  @RutaCritica @E-3.1
   Escenario: Uso combinado de temporizador y calculadora de fechas
     Dado que el usuario tiene abierto el temporizador en una pestaña
     Cuando inicia un contador de 10 minutos

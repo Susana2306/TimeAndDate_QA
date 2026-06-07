@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 010 - Calcular zonas horarias y consultar reloj mundial (HU-14 / HU-13)
 
-  @RutaCritica
+  @RutaCritica @E-4.1
   Escenario: Conversión de hora y contraste con reloj mundial
     Dado que el usuario convierte la hora actual de Bogotá a "Tokio" en el conversor de husos horarios
     Cuando anota el resultado de la conversión

@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 014 - Consultar eventos y fechas importantes (HU-2)
 
-  @RutaAlterna
+  @RutaAlterna @I-2.2
   Escenario: Cancelación de creación de evento
     Dado que el usuario ingresa al creador de cuenta regresiva para un evento
     Cuando llena el título del evento con "Reunión GITESI"

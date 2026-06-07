@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 017 - Obtener Información Meteorológica (HU-3)
 
-  @RutaAlterna
+  @RutaAlterna @U-3.1
   Escenario: Visualización del valor de temperatura en clima
     Dado que el usuario ingresa a la sección principal del clima
     Cuando busca cualquier ciudad válida

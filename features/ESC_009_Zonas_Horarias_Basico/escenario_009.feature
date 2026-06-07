@@ -1,7 +1,7 @@
 # language: es
 Característica: Escenario 009 - Consultar zonas horarias básicas (HU-14)
 
-  @RutaAlterna
+  @RutaAlterna @U-14.2
   Escenario: Validación con zona origen y destino iguales
     Dado que el usuario abre el convertidor de huso horario de timeanddate (/worldclock/converter.html)
     Cuando selecciona "Colombia - Bogotá" en el campo de ciudad origen
@@ -9,7 +9,7 @@ Característica: Escenario 009 - Consultar zonas horarias básicas (HU-14)
     Y ejecuta el cálculo de conversión presionando el botón "Convert time"
     Entonces el resultado muestra exactamente la misma hora o un mensaje indicando que las zonas son idénticas
 
-  @RutaAlterna
+  @RutaAlterna @U-14.1
   Escenario: Conversión hacia zona destino
     Dado que el usuario se encuentra en la pantalla del convertidor de hora
     Cuando selecciona una zona origen "Colombia - Bogotá" y una zona destino diferente como "Spain - Madrid"
