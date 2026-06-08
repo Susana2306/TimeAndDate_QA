@@ -33,14 +33,24 @@ def step_impl(context, ciudad):
     _click_first_asu(context.driver)
 
 @when('selecciona la misma zona "{ciudad}" en el campo de ciudad destino')
-@when('selecciona una zona origen "{ciudad_orig}" y una zona destino diferente como "{ciudad}"')
-def step_impl(context, ciudad, ciudad_orig=None):
+def step_impl(context, ciudad):
     p2 = WebDriverWait(context.driver, 8).until(
         EC.element_to_be_clickable((By.ID, "addtxt"))
     )
     p2.clear()
     p2.send_keys(ciudad)
     _click_first_asu(context.driver)
+
+@when('selecciona una zona origen "{ciudad_orig}" y una zona destino diferente como "{ciudad}"')
+def step_impl(context, ciudad_orig, ciudad):
+    for nombre in (ciudad_orig, ciudad):
+        box = WebDriverWait(context.driver, 8).until(
+            EC.element_to_be_clickable((By.ID, "addtxt"))
+        )
+        box.clear()
+        box.send_keys(nombre)
+        _click_first_asu(context.driver)
+        time.sleep(0.5)
 
 @when('introduce una hora específica para la conversión')
 def step_impl(context):

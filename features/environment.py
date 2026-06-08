@@ -13,6 +13,13 @@ _HTML_REPORT = "reporte_pruebas.html"
 # Cookies de sesión compartidas — login ocurre UNA SOLA VEZ en before_all
 _SESSION_COOKIES = None
 
+# Credenciales: se intenta en orden, la primera que funcione queda activa
+_CREDENTIALS = [
+    ("lupitasolorzanosalazar@gmail.com", "Susana12345678"),
+    ("kev082001@gmail.com", "285285Ok"),
+]
+_ACTIVE_CREDS = _CREDENTIALS[0]  # fallback por defecto
+
 
 def _expand_embeds():
     """Post-procesa el HTML para mostrar capturas expandidas sin necesidad de click."""
@@ -50,22 +57,30 @@ def _make_driver(incognito=True):
 
 
 def before_all(context):
-    """Login único — guarda cookies para reuso en escenarios que necesiten sesión."""
-    global _SESSION_COOKIES
+    """Login único — prueba credenciales en orden, guarda cookies de la primera que funcione."""
+    global _SESSION_COOKIES, _ACTIVE_CREDS
     driver = _make_driver(incognito=False)
     try:
-        driver.get("https://www.timeanddate.com/custom/login.html")
-        time.sleep(2)
-        driver.find_element(By.ID, "email").send_keys("kev082001@gmail.com")
-        driver.find_element(By.ID, "password").send_keys("285285Ok")
-        driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
-        WebDriverWait(driver, 20).until(lambda d: "login" not in d.current_url)
-        time.sleep(1)
-        _SESSION_COOKIES = driver.get_cookies()
-        print(f"\n[AUTH] Sesión establecida — {len(_SESSION_COOKIES)} cookies guardadas.")
-    except Exception as e:
-        print(f"\n[AUTH] No se pudo hacer login previo: {e}")
-        _SESSION_COOKIES = []
+        for email, password in _CREDENTIALS:
+            try:
+                driver.get("https://www.timeanddate.com/custom/login.html")
+                time.sleep(2)
+                driver.find_element(By.ID, "email").clear()
+                driver.find_element(By.ID, "email").send_keys(email)
+                driver.find_element(By.ID, "password").clear()
+                driver.find_element(By.ID, "password").send_keys(password)
+                driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+                WebDriverWait(driver, 20).until(lambda d: "login" not in d.current_url)
+                time.sleep(1)
+                _SESSION_COOKIES = driver.get_cookies()
+                _ACTIVE_CREDS = (email, password)
+                print(f"\n[AUTH] Sesión establecida con {email} — {len(_SESSION_COOKIES)} cookies guardadas.")
+                break
+            except Exception as e:
+                print(f"\n[AUTH] Falló con {email}: {e}. Intentando siguiente...")
+                _SESSION_COOKIES = []
+        else:
+            print("\n[AUTH] Todas las credenciales fallaron.")
     finally:
         driver.quit()
 
@@ -87,8 +102,8 @@ def inject_session(driver):
 
 def before_scenario(context, scenario):
     context.driver = _make_driver(incognito=True)
-    # Exponer inject_session para que los steps puedan usarlo
     context.inject_session = lambda: inject_session(context.driver)
+    context.credentials = _ACTIVE_CREDS  # (email, password) de la sesión activa
 
     # Conectar context.embed al formatter HTML si está activo
     context.embed = None
