@@ -58,10 +58,16 @@ def step_impl(context, destino):
     )
     context.driver.execute_script("arguments[0].click();", search)
     search.send_keys(search_term)
-    item = WebDriverWait(context.driver, 8).until(
-        EC.presence_of_element_located((By.XPATH, "//ul[@class='asu']/li/a"))
-    )
-    context.driver.execute_script("arguments[0].click();", item)
+    for _ in range(3):
+        try:
+            item = WebDriverWait(context.driver, 6).until(
+                EC.presence_of_element_located((By.XPATH, "//ul[@class='asu']/li/a"))
+            )
+            context.driver.execute_script("arguments[0].click();", item)
+            time.sleep(0.5)
+            break
+        except Exception:
+            time.sleep(0.5)
 
 @then('la hora mostrada en el reloj mundial para Tokio coincide con la conversión previa con un margen máximo de 1 minuto')
 def step_impl(context):

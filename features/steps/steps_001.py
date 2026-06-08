@@ -19,8 +19,9 @@ def step_impl(context):
     WebDriverWait(context.driver, 10).until(
         EC.presence_of_element_located((By.ID, "email"))
     )
-    context.driver.find_element(By.ID, "email").send_keys("kev082001@gmail.com")
-    context.driver.find_element(By.ID, "password").send_keys("285285Ok")
+    email, password = context.credentials
+    context.driver.find_element(By.ID, "email").send_keys(email)
+    context.driver.find_element(By.ID, "password").send_keys(password)
 
 @when('presiona el botón de iniciar sesión')
 def step_impl(context):
