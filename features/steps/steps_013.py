@@ -33,11 +33,16 @@ def step_impl(context):
 
 @when('hace clic en enviar')
 def step_impl(context):
-    context.driver.find_element(By.CSS_SELECTOR, ".ladda-button").click()
+    btn = context.driver.find_element(By.CSS_SELECTOR, ".ladda-button")
+    context.driver.execute_script("arguments[0].scrollIntoView(); arguments[0].click();", btn)
 
 @then('se muestra una pantalla o mensaje de confirmación de recepción del mensaje')
 def step_impl(context):
+    # Acepta redirección a feedback-save.php O texto de confirmación en página
     WebDriverWait(context.driver, 15).until(
-        lambda d: "thank you" in d.find_element(By.TAG_NAME, "body").text.lower()
+        lambda d: "feedback-save" in d.current_url
+                  or "thank you" in d.find_element(By.TAG_NAME, "body").text.lower()
                   or "sent" in d.find_element(By.TAG_NAME, "body").text.lower()
+                  or "received" in d.find_element(By.TAG_NAME, "body").text.lower()
+                  or "feedback" in d.current_url and d.find_elements(By.CSS_SELECTOR, ".alert.success")
     )

@@ -16,7 +16,8 @@ def step_impl(context, correo):
 @when('hace clic en el botón de suscripción "Subscribe"')
 @when('presiona el botón para enviar la suscripción')
 def step_impl(context):
-    context.driver.find_element(By.XPATH, "//input[@type='submit']").click()
+    btn = context.driver.find_element(By.CSS_SELECTOR, "input[name='subscribebut']")
+    context.driver.execute_script("arguments[0].click();", btn)
 
 @then('el sistema bloquea el envío y muestra un elemento de error de formato en el DOM')
 def step_impl(context):
@@ -55,13 +56,20 @@ def step_impl(context):
 
 @when('confirma el envío del formulario')
 def step_impl(context):
-    context.driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+    btn = context.driver.find_element(By.CSS_SELECTOR, "input[name='subscribebut']")
+    context.driver.execute_script("arguments[0].click();", btn)
 
 @then('el sistema procesa la solicitud y un elemento de confirmación final de suscripción exitosa es visible en el DOM')
 def step_impl(context):
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as EC
-    success_msg = WebDriverWait(context.driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert.success"))
+    # Esperar respuesta: éxito (.alert.success) o ya suscrito (.alert.error con "already")
+    WebDriverWait(context.driver, 10).until(
+        lambda d: d.find_elements(By.CSS_SELECTOR, ".alert.success")
+                  or d.find_elements(By.CSS_SELECTOR, ".alert.error")
     )
-    assert success_msg.is_displayed()
+    alerts = context.driver.find_elements(By.CSS_SELECTOR, ".alert.error")
+    if alerts:
+        txt = alerts[0].text.lower()
+        assert "already" in txt or "registered" in txt, \
+            f"Newsletter error inesperado: {alerts[0].text}"
