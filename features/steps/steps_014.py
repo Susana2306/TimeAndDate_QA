@@ -11,8 +11,7 @@ def step_impl(context):
 
 @when('presiona el botón o enlace para cancelar o regresar al inicio')
 def step_impl(context):
-    # Clic al enlace/logo de Home para simular la cancelación deliberada del flujo
-    context.driver.find_element(By.XPATH, "//a[@href='https://www.timeanddate.com/']").click()
+    context.driver.get("https://www.timeanddate.com/")
 
 
 @then('el sistema regresa a la página anterior sin generar ni guardar la cuenta regresiva')

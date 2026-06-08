@@ -1,5 +1,7 @@
 from behave import given, when, then
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 @given('que el usuario se encuentra en la página de clima de "Bogotá"')
 def step_impl(context):
@@ -17,5 +19,7 @@ def step_impl(context):
 
 @then('se visualizan las horas de salida y puesta del sol junto con la fase lunar actual de Bogotá')
 def step_impl(context):
-    body_content = context.driver.find_element(By.TAG_NAME, "body").text
-    assert "Sunrise" in body_content or "Moon" in body_content
+    WebDriverWait(context.driver, 15).until(
+        lambda d: "Sunrise" in d.find_element(By.TAG_NAME, "body").text
+                  or "Moon" in d.find_element(By.TAG_NAME, "body").text
+    )

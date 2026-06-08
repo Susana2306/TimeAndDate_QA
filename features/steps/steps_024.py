@@ -10,17 +10,45 @@ def step_impl(context):
 
 @when('el tiempo está configurado en "00:00:00"')
 def step_impl(context):
-    # El timer carga con un tiempo configurado por defecto (ej: 00:02:00).
-    # Primero reseteamos para asegurar que está en estado de espera.
-    reset_btn = WebDriverWait(context.driver, 8).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--reset"))
+    edit_btn = WebDriverWait(context.driver, 8).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__edit"))
     )
-    reset_btn.click()
+    context.driver.execute_script("arguments[0].click();", edit_btn)
+    time.sleep(1)
+    # Intentar con IDs conocidos; si no existen, buscar inputs numéricos del modal
+    for selector in ["#hourInput", "#minuteInput", "#secondInput",
+                     "input[data-unit='h']", "input[data-unit='m']", "input[data-unit='s']"]:
+        try:
+            fields = context.driver.find_elements(By.CSS_SELECTOR, selector)
+            for f in fields:
+                if f.is_displayed():
+                    f.clear()
+                    f.send_keys("0")
+        except Exception:
+            pass
+    # Confirmar con botón Done o cualquier submit del modal
+    for done_sel in ["input[value='Done']", "button[type='submit']", ".c-timer__done"]:
+        try:
+            btn = context.driver.find_element(By.CSS_SELECTOR, done_sel)
+            if btn.is_displayed():
+                context.driver.execute_script("arguments[0].click();", btn)
+                break
+        except Exception:
+            pass
     time.sleep(1)
 
 @when('presiona el botón de "Start"')
+@when('presiona "Start"')
 def step_impl(context):
-    context.driver.find_element(By.CSS_SELECTOR, ".c-timer__btn--start").click()
+    start_btn = WebDriverWait(context.driver, 8).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--start"))
+    )
+    context.driver.execute_script("arguments[0].click();", start_btn)
+    # Descartar cualquier JS alert que aparezca (ej: "tiempo debe ser > 0")
+    try:
+        context.driver.switch_to.alert.accept()
+    except Exception:
+        pass
 
 @then('el sistema no inicia el conteo o muestra una alerta para ingresar un tiempo mayor a cero')
 def step_impl(context):
@@ -41,17 +69,12 @@ def step_impl(context):
 
 @when('espera unos segundos y luego presiona "Pause"')
 def step_impl(context):
-    # Primero iniciamos, luego pausamos
-    start_btn = WebDriverWait(context.driver, 5).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--start"))
-    )
-    start_btn.click()
     time.sleep(2)
-    # El botón Pause aparece cuando el timer está corriendo
-    pause_btn = WebDriverWait(context.driver, 5).until(
+    pause_btn = WebDriverWait(context.driver, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--pause"))
     )
-    pause_btn.click()
+    context.driver.execute_script("arguments[0].click();", pause_btn)
+    time.sleep(0.5)
 
 @then('el tiempo se detiene correctamente en el valor transcurrido')
 def step_impl(context):

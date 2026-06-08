@@ -12,7 +12,7 @@ def step_impl(context):
 def step_impl(context):
     wait = WebDriverWait(context.driver, 10)
     fila = wait.until(EC.presence_of_element_located(
-        (By.XPATH, "//table[@id='tz-list']//td[contains(@class,'c')]/a[contains(text(),'Bogot')]/ancestor::tr/td[contains(@class,'time')]")
+        (By.XPATH, "//table[contains(@class,'tb-theme')]//td[a[contains(text(),'Bogot')]]/following-sibling::td[@class='rbi'][1]")
     ))
     context.hora_inicial = fila.text.strip()
 
@@ -22,10 +22,7 @@ def step_impl(context):
 
 @then('la hora mostrada en el reloj se ha actualizado con respecto a la lectura anterior')
 def step_impl(context):
-    wait = WebDriverWait(context.driver, 10)
-    fila = wait.until(EC.presence_of_element_located(
-        (By.XPATH, "//table[@id='tz-list']//td[contains(@class,'c')]/a[contains(text(),'Bogot')]/ancestor::tr/td[contains(@class,'time')]")
-    ))
-    hora_actual = fila.text.strip()
-    assert hora_actual != context.hora_inicial, \
-        f"La hora no se actualizó: antes={context.hora_inicial}, después={hora_actual}"
+    XPATH = "//table[contains(@class,'tb-theme')]//td[a[contains(text(),'Bogot')]]/following-sibling::td[@class='rbi'][1]"
+    WebDriverWait(context.driver, 70).until(
+        lambda d: d.find_element(By.XPATH, XPATH).text.strip() != context.hora_inicial
+    )

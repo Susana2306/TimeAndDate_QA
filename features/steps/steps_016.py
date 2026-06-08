@@ -1,5 +1,7 @@
 from behave import given, when, then
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 @given('que el usuario está en el creador de cuenta regresiva')
 def step_impl(context):
@@ -17,6 +19,10 @@ def step_impl(context):
 
 @then('se genera una URL única que muestra el cronómetro en vivo hacia la fecha del evento')
 def step_impl(context):
-    assert "countdown" in context.driver.current_url
-    cronometro = context.driver.find_element(By.CSS_SELECTOR, "[class*='countdown']")
+    WebDriverWait(context.driver, 15).until(
+        lambda d: "countdown" in d.current_url and "create" not in d.current_url
+    )
+    cronometro = WebDriverWait(context.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, "[class*='countdown']"))
+    )
     assert cronometro.is_displayed()

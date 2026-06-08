@@ -9,7 +9,7 @@ def step_impl(context):
     context.driver.get("https://www.timeanddate.com/timer/")
     time.sleep(1)
 
-@when('inicia un contador de 10 minutes')
+@when('inicia un contador de 10 minutos')
 def step_impl(context):
     start_btn = WebDriverWait(context.driver, 8).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".c-timer__btn--start"))

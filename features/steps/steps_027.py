@@ -14,8 +14,9 @@ def step_impl(context, mes_falso):
 
 @when('hace clic en el botón de calcular duración')
 def step_impl(context):
-    # El botón de submit real tiene id="subbut2"
-    context.driver.find_element(By.ID, "subbut2").click()
+    btn = context.driver.find_element(By.ID, "subbut2")
+    context.driver.execute_script("arguments[0].scrollIntoView(true);", btn)
+    context.driver.execute_script("arguments[0].click();", btn)
 
 @then('el sistema muestra un mensaje de error indicando que la fecha es inválida y no calcula el resultado')
 def step_impl(context):

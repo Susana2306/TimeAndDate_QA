@@ -25,9 +25,11 @@ def step_impl(context, ciudad, ciudad_orig=None):
 
 @when('introduce una hora específica para la conversión')
 def step_impl(context):
-    # Click the time button to open the edit date/time modal
-    time_btn = WebDriverWait(context.driver, 5).until(EC.element_to_be_clickable((By.CLASS_NAME, "location__formatted-time")))
-    time_btn.click()
+    time_btn = WebDriverWait(context.driver, 5).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "location__formatted-time"))
+    )
+    context.driver.execute_script("arguments[0].scrollIntoView(true);", time_btn)
+    context.driver.execute_script("arguments[0].click();", time_btn)
     
     # Enter the hour and minutes
     h = WebDriverWait(context.driver, 5).until(EC.presence_of_element_located((By.ID, "h1")))

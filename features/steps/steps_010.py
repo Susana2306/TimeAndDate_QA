@@ -25,6 +25,9 @@ def step_impl(context, destino):
 
 @when('anota el resultado de la conversión')
 def step_impl(context):
+    WebDriverWait(context.driver, 10).until(
+        lambda d: len(d.find_elements(By.CLASS_NAME, "location__row")) >= 2
+    )
     rows = context.driver.find_elements(By.CLASS_NAME, "location__row")
     context.conversion_output = rows[1].find_element(By.CLASS_NAME, "location__formatted-time").text.split(":")[0].strip()
 
@@ -33,7 +36,9 @@ def step_impl(context, destino):
     context.driver.get("https://www.timeanddate.com/worldclock/")
     search = context.driver.find_element(By.CLASS_NAME, "picker-city__input")
     search.send_keys(destino)
-    context.driver.find_element(By.CLASS_NAME, "picker-city__button").click()
+    WebDriverWait(context.driver, 8).until(
+        EC.element_to_be_clickable((By.XPATH, "//ul[@class='asu']/li/a"))
+    ).click()
 
 @then('la hora mostrada en el reloj mundial para Tokio coincide con la conversión previa con un margen máximo de 1 minuto')
 def step_impl(context):

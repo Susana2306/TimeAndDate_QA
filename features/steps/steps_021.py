@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 @given('que el usuario se encuentra en la sección de Newsletter de la empresa (/news/newsletter.html)')
 @given('que el formulario de suscripción está desplegado en pantalla')
 @given('que el usuario está en la sección informativa de la empresa')
+@given('que el usuario visualiza el campo de email del newsletter')
 def step_impl(context):
     context.driver.get("https://www.timeanddate.com/newsletter/")
 
@@ -19,14 +20,14 @@ def step_impl(context):
 
 @then('el sistema bloquea el envío y muestra un elemento de error de formato en el DOM')
 def step_impl(context):
-    error_box = context.driver.find_element(By.CLASS_NAME, "err")
+    error_box = context.driver.find_element(By.CSS_SELECTOR, ".alert.error")
     assert error_box.is_displayed()
 
 @when('el usuario localiza el campo de entrada de texto para el email')
 def step_impl(context):
     context.input_email = context.driver.find_element(By.ID, "email")
 
-@when('digita un correo electrónico de forma correcta')
+@when('digita un correo electrónico estructurado correctamente')
 def step_impl(context):
     context.input_email.send_keys("kevin_valido@gmail.com")
 
@@ -41,16 +42,26 @@ def step_impl(context):
 
 @then('se muestra un mensaje en pantalla indicando que es un campo requerido y no genera confirmación de éxito')
 def step_impl(context):
-    body_text = context.driver.find_element(By.TAG_NAME, "body").text
-    assert "required" in body_text.lower() or "error" in body_text.lower()
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    error_box = WebDriverWait(context.driver, 5).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert.error"))
+    )
+    assert error_box.is_displayed()
 
 @when('ingresa una dirección de correo válida y nueva que no esté registrada previamente')
-@when('confirma el envío del formulario')
 def step_impl(context):
     context.driver.find_element(By.ID, "email").send_keys("kevin_qa_new@gmail.com")
-    context.driver.find_element(By.ID, "submit").click()
+
+@when('confirma el envío del formulario')
+def step_impl(context):
+    context.driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
 
 @then('el sistema procesa la solicitud y un elemento de confirmación final de suscripción exitosa es visible en el DOM')
 def step_impl(context):
-    success_msg = context.driver.find_element(By.CLASS_NAME, "msg-box")
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    success_msg = WebDriverWait(context.driver, 10).until(
+        EC.visibility_of_element_located((By.CSS_SELECTOR, ".alert.success"))
+    )
     assert success_msg.is_displayed()
