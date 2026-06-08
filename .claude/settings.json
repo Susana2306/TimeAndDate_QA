@@ -8,7 +8,10 @@
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\Usuario\\\\OneDrive - IUE\\\\Desktop\\\\U\\\\Semestre7\\\\Calidad de software\\\\TimeAndDate_QA\\\\jmeter\\\\resultados\\\\\" -Recurse -Force | ForEach-Object { $_.FullName + \"  \\(\" + $_.Length + \" bytes\\)\" })",
       "PowerShell(Start-Process \"c:\\\\Users\\\\Usuario\\\\OneDrive - IUE\\\\Desktop\\\\U\\\\Semestre7\\\\Calidad de software\\\\TimeAndDate_QA\\\\jmeter\\\\resultados\\\\dashboard_final\\\\index.html\")",
       "PowerShell(cmd /c \"c:\\\\Users\\\\Usuario\\\\OneDrive - IUE\\\\Desktop\\\\U\\\\Semestre7\\\\Calidad de software\\\\TimeAndDate_QA\\\\jmeter\\\\ejecutar_pruebas_carga.bat\" 3 5 20 2>&1)",
-      "Read(//c/apache-jmeter/bin/**)"
+      "Read(//c/apache-jmeter/bin/**)",
+      "Bash(git commit -m ' *)",
+      "Bash(git stash *)",
+      "Bash(git add *)"
     ]
   }
 }
