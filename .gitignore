@@ -1,1 +1,4 @@
 venv/**/*
+jmeter/resultados/*.jtl
+jmeter/resultados/dashboard_*/
+jmeter/resultados/resultados_raw.jtl
