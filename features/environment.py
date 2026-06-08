@@ -1,11 +1,17 @@
 import atexit
 import os
+import time
 import traceback
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 _HTML_REPORT = "reporte_pruebas.html"
+
+# Cookies de sesión compartidas — login ocurre UNA SOLA VEZ en before_all
+_SESSION_COOKIES = None
 
 
 def _expand_embeds():
@@ -31,15 +37,58 @@ def _expand_embeds():
 atexit.register(_expand_embeds)
 
 
-def before_scenario(context, scenario):
+def _make_driver(incognito=True):
     options = webdriver.ChromeOptions()
+    if incognito:
+        options.add_argument("--incognito")
     options.add_argument("--start-maximized")
     options.add_argument("--disable-notifications")
-    # options.add_argument("--headless")
-
     service = Service(ChromeDriverManager().install())
-    context.driver = webdriver.Chrome(service=service, options=options)
-    context.driver.implicitly_wait(8)
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.implicitly_wait(8)
+    return driver
+
+
+def before_all(context):
+    """Login único — guarda cookies para reuso en escenarios que necesiten sesión."""
+    global _SESSION_COOKIES
+    driver = _make_driver(incognito=False)
+    try:
+        driver.get("https://www.timeanddate.com/custom/login.html")
+        time.sleep(2)
+        driver.find_element(By.ID, "email").send_keys("kev082001@gmail.com")
+        driver.find_element(By.ID, "password").send_keys("285285Ok")
+        driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+        WebDriverWait(driver, 20).until(lambda d: "login" not in d.current_url)
+        time.sleep(1)
+        _SESSION_COOKIES = driver.get_cookies()
+        print(f"\n[AUTH] Sesión establecida — {len(_SESSION_COOKIES)} cookies guardadas.")
+    except Exception as e:
+        print(f"\n[AUTH] No se pudo hacer login previo: {e}")
+        _SESSION_COOKIES = []
+    finally:
+        driver.quit()
+
+
+def inject_session(driver):
+    """Inyecta las cookies de sesión en el driver activo."""
+    if not _SESSION_COOKIES:
+        return
+    driver.get("https://www.timeanddate.com")
+    time.sleep(1)
+    for cookie in _SESSION_COOKIES:
+        try:
+            driver.add_cookie(cookie)
+        except Exception:
+            pass
+    driver.refresh()
+    time.sleep(1)
+
+
+def before_scenario(context, scenario):
+    context.driver = _make_driver(incognito=True)
+    # Exponer inject_session para que los steps puedan usarlo
+    context.inject_session = lambda: inject_session(context.driver)
 
     # Conectar context.embed al formatter HTML si está activo
     context.embed = None
@@ -62,17 +111,13 @@ def _embed_screenshot(context, caption):
 
 def after_step(context, step):
     if step.status == "failed":
-        # Pantallazo en el paso que falló
         _embed_screenshot(context, f"Fallo en: {step.name}")
-
-        # Detalle completo del error (traceback)
         if context.embed is not None and step.exception is not None:
             tb_lines = traceback.format_exception(
                 type(step.exception), step.exception, step.exc_traceback
             )
             context.embed("text/plain", "".join(tb_lines), "Detalle del Error")
     else:
-        # Pantallazo de cada paso exitoso (muestra progresión)
         _embed_screenshot(context, f"Paso OK: {step.name}")
 
 

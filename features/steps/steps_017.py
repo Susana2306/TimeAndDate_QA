@@ -14,9 +14,10 @@ def step_impl(context):
     )
     context.driver.execute_script("arguments[0].click();", search)
     search.send_keys("Medellin")
-    WebDriverWait(context.driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//ul[@class='asu']/li/a"))
-    ).click()
+    item = WebDriverWait(context.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//ul[@class='asu']/li/a"))
+    )
+    context.driver.execute_script("arguments[0].click();", item)
 
 
 @then('el panel de resultados muestra un valor numérico acompañado del símbolo "°C" o "°F"')
