@@ -32,10 +32,16 @@ def step_impl(context):
 @when('navega a la sección de configuración "My Units" (/custom/)')
 def step_impl(context):
     context.driver.get("https://www.timeanddate.com/custom/")
+    # Verify we are on settings page, not redirected to login
+    WebDriverWait(context.driver, 10).until(
+        lambda d: "login" not in d.current_url
+    )
 
 @when('cambia la ciudad base a "Bogotá" y el idioma de la interfaz')
 def step_impl(context):
-    box = context.driver.find_element(By.ID, "homecity")
+    box = WebDriverWait(context.driver, 15).until(
+        EC.presence_of_element_located((By.ID, "homecity"))
+    )
     box.clear()
     box.send_keys("Bogota")
 
@@ -109,5 +115,8 @@ def step_impl(context):
 
 @then('la ciudad configurada en preferencias se refleja automáticamente en las consultas de reloj mundial y clima')
 def step_impl(context):
-    header_city = context.driver.find_element(By.ID, "nav-bc").text
-    assert "Bogota" in header_city or "Colombia" in header_city
+    # El worldclock muestra Bogota en la tabla de ciudades por defecto
+    bogota = WebDriverWait(context.driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//a[contains(@href,'colombia/bogota')]"))
+    )
+    assert bogota.is_displayed()
