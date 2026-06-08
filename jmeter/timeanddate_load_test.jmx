@@ -229,7 +229,7 @@ NOTA: ESC-02/03/04 retornan 403 por WAF/Cloudflare (hallazgo documentado)</strin
               <fieldNames>true</fieldNames>
               <responseHeaders>false</responseHeaders>
               <requestHeaders>false</requestHeaders>
-              <responseDataOnError>true</responseDataOnError>
+              <responseDataOnError>false</responseDataOnError>
               <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
               <bytes>true</bytes>
               <sentBytes>true</sentBytes>

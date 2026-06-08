@@ -57,7 +57,18 @@ if not exist "%JMETER_CMD%" (
     exit /b 1
 )
 
-call "%JMETER_CMD%" -n -t "%JMX%" -l "%JTL%" -e -o "%DASH%" -JNUM_USUARIOS=%USUARIOS% -JRAMP_UP_SEG=%RAMPUP% -JDURACION_SEG=%DURACION%
+:: Paso 1: ejecutar test (sin -e -o para evitar fallo si el CSV tiene datos de error)
+call "%JMETER_CMD%" -n -t "%JMX%" -l "%JTL%" -JNUM_USUARIOS=%USUARIOS% -JRAMP_UP_SEG=%RAMPUP% -JDURACION_SEG=%DURACION%
+
+if not exist "%JTL%" (
+    echo ERROR: JTL no generado. Revisa la salida anterior.
+    pause
+    exit /b 1
+)
+
+echo.
+echo Generando reporte HTML...
+call "%JMETER_CMD%" -g "%JTL%" -o "%DASH%"
 
 if exist "%DASH%\index.html" (
     echo.
@@ -66,10 +77,7 @@ if exist "%DASH%\index.html" (
     start "" "%DASH%\index.html"
 ) else (
     echo.
-    echo JMeter termino pero sin dashboard.
-    if exist "%JTL%" (
-        echo JTL disponible: %JTL%
-        echo Generar dashboard: jmeter -g "%JTL%" -o "%DASH%"
-    )
+    echo Reporte no generado, pero JTL disponible:
+    echo %JTL%
 )
 pause
