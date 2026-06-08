@@ -1,5 +1,6 @@
 import atexit
 import os
+import sys
 import time
 import traceback
 from selenium import webdriver
@@ -9,6 +10,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 _HTML_REPORT = "reporte_pruebas.html"
+
+# Resultados de escenarios: { 'U-13.1': { status, scenario_name, error_msg } }
+_test_results = {}
 
 # Cookies de sesión compartidas — login ocurre UNA SOLA VEZ en before_all
 _SESSION_COOKIES = None
@@ -31,9 +35,10 @@ def _expand_embeds():
         return
     css = (
         "<style>\n"
-        "  img[id^='embed_'] { display: block !important; max-width: 100%; margin: 6px 0; border: 1px solid #ccc; }\n"
-        "  pre[id^='embed_'] { display: block !important; background: #f5f5f5; padding: 8px; white-space: pre-wrap; }\n"
-        "  video[id^='embed_'] { display: block !important; max-width: 100%; }\n"
+        "  span.embed { display: block; }\n"
+        "  img[id^='embed_'] { display: inline-block !important; width: calc(50% - 6px); max-width: calc(50% - 6px); vertical-align: top; box-sizing: border-box; margin: 3px; border: 1px solid #ccc; }\n"
+        "  pre[id^='embed_'] { display: block !important; background: #f5f5f5; padding: 8px; white-space: pre-wrap; box-sizing: border-box; }\n"
+        "  video[id^='embed_'] { display: inline-block !important; width: calc(50% - 6px); max-width: calc(50% - 6px); vertical-align: top; box-sizing: border-box; margin: 3px; }\n"
         "</style>"
     )
     content = content.replace("</body>", css + "\n</body>", 1)
@@ -137,6 +142,8 @@ def after_step(context, step):
 
 
 def after_scenario(context, scenario):
+    global _test_results
+
     if hasattr(context, "driver"):
         estado = "PASÓ" if scenario.status == "passed" else "FALLÓ"
         _embed_screenshot(context, f"Estado final [{estado}]")
@@ -149,3 +156,34 @@ def after_scenario(context, scenario):
             print(f"\n[ALERTA QA] Escenario fallido. Captura guardada en: {ruta}")
 
         context.driver.quit()
+
+    # Colectar resultado para actualización de Excel
+    error_msg = None
+    if scenario.status == "failed":
+        for step in scenario.steps:
+            if step.status == "failed" and step.exception:
+                error_msg = f"Fallo en '{step.name}': {step.exception}"
+                break
+
+    for tag in scenario.tags:
+        # Solo tags que corresponden a IDs de casos (U-X.Y, P-X.Y, E-X.Y, I-X.Y)
+        if len(tag) > 2 and tag[1] == "-" and tag[0].isalpha():
+            _test_results[tag] = {
+                "status": str(scenario.status),
+                "scenario_name": scenario.name,
+                "error_msg": error_msg,
+            }
+
+
+def after_all(context):
+    if not _test_results:
+        return
+    # Asegurar que update_excel_results.py sea encontrado desde cualquier cwd
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
+    try:
+        from update_excel_results import update_excel
+        update_excel(_test_results)
+    except Exception as e:
+        print(f"\n[EXCEL] Error al actualizar el Excel: {e}")
