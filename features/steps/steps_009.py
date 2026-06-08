@@ -65,7 +65,10 @@ def step_impl(context):
     m = context.driver.find_element(By.ID, "i1")
     m.clear()
     m.send_keys("00")
-    context.driver.find_element(By.XPATH, "//button[contains(text(), 'Close')]").click()
+    close_btn = WebDriverWait(context.driver, 5).until(
+        EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'Close')]"))
+    )
+    context.driver.execute_script("arguments[0].click();", close_btn)
 
 @when('ejecuta el cálculo de conversión presionando el botón "Convert time"')
 @when('ejecuta el cálculo de conversión')
